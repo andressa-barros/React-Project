@@ -3,6 +3,8 @@ import minecraftImg from "../assets/minecraft.jpg";
 import bluePrinceImg from "../assets/bluePrince.jpg";
 import tlouImg from "../assets/tlou2.jpg";
 import elderRingImg from "../assets/elderRing.jpg";
+import enigmaDoMedoImg from "../assets/enigmaDoMedo.jpg";
+import residentEvilImg from "../assets/residentEvil.jpg";
 
 function Jogos() {
   return (
@@ -43,7 +45,25 @@ function Jogos() {
         </div>
       </div>
 
-      <div className="novo-jogo">
+      <div className="jogo">
+        <img src={enigmaDoMedoImg} alt="Enigma do Medo" />
+        <p className="nome-jogo">Enigma do Medo</p>
+        <div className="acoes">
+          <button className="botao-editar">Editar</button>
+          <button className="botao-excluir">Excluir</button>
+        </div>
+      </div>
+
+      <div className="jogo">
+        <img src={residentEvilImg} alt="Resident Evil" />
+        <p className="nome-jogo">Resident Evil</p>
+        <div className="acoes">
+          <button className="botao-editar">Editar</button>
+          <button className="botao-excluir">Excluir</button>
+        </div>
+      </div>
+
+      <div>
         <button className="botao-novo-jogo">
           <span className="icone-mais">+</span>
           <span className="texto-novo-jogo">Adicionar</span>
