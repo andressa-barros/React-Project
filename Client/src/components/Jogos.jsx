@@ -1,13 +1,46 @@
 import { Link } from "react-router-dom";
 import "../styles/jogos.css";
-import minecraftImg from "../assets/minecraft.jpg";
-import bluePrinceImg from "../assets/bluePrince.jpg";
-import tlouImg from "../assets/tlou2.jpg";
-import elderRingImg from "../assets/elderRing.jpg";
-import enigmaDoMedoImg from "../assets/enigmaDoMedo.jpg";
-import residentEvilImg from "../assets/residentEvil.jpg";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function Jogos() {
+  const [jogos, setJogos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchJogos = async () => {
+      try {
+        const response = await axios.get("http://localhost:8800/jogos");
+        setJogos(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar jogos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJogos();
+  }, []);
+
+  const deleteJogos = async (id_jogos) => {
+    const confirmar = window.confirm(
+      "Tem certeza que deseja excluir este jogo?",
+    );
+
+    if (!confirmar) return;
+
+    try {
+      await axios.delete(`http://localhost:8800/jogos/${id_jogos}`);
+
+      setJogos((prevJogos) =>
+        prevJogos.filter((jogo) => jogo.id_jogos !== id_jogos),
+      );
+    } catch (error) {
+      console.error("Erro ao excluir jogo:", error);
+      alert("Erro ao excluir jogo.");
+    }
+  };
+
   return (
     <div className="pagina-jogos">
       <div className="cabecalho-jogos">
@@ -15,59 +48,37 @@ function Jogos() {
       </div>
 
       <div className="div-jogos">
-        <div className="jogo">
-          <img src={minecraftImg} alt="Minecraft" />
-          <p className="nome-jogo">Minecraft</p>
-          <div className="acoes">
-            <button className="botao-editar">Editar</button>
-            <button className="botao-excluir">Excluir</button>
-          </div>
-        </div>
+        {loading ? (
+          <p className="mensagem-status">Carregando jogos...</p>
+        ) : jogos.length === 0 ? (
+          <p className="mensagem-status">Nenhum jogo cadastrado ainda.</p>
+        ) : (
+          jogos.map((jogo) => (
+            <div className="jogo" key={jogo.id_jogos}>
+              <img
+                src={`http://localhost:8800/uploads/${jogo.imagem}`}
+                alt={jogo.nome}
+                onError={(e) => {
+                  e.target.src =
+                    "https://via.placeholder.com/220x240?text=Sem+Imagem";
+                }}
+              />
 
-        <div className="jogo">
-          <img src={bluePrinceImg} alt="Blue Prince" />
-          <p className="nome-jogo">Blue Prince</p>
-          <div className="acoes">
-            <button className="botao-editar">Editar</button>
-            <button className="botao-excluir">Excluir</button>
-          </div>
-        </div>
+              <p className="nome-jogo">{jogo.nome}</p>
 
-        <div className="jogo">
-          <img src={tlouImg} alt="The Last of Us 2" />
-          <p className="nome-jogo">The Last of Us 2</p>
-          <div className="acoes">
-            <button className="botao-editar">Editar</button>
-            <button className="botao-excluir">Excluir</button>
-          </div>
-        </div>
+              <div className="acoes">
+                <button className="botao-editar">Editar</button>
 
-        <div className="jogo">
-          <img src={elderRingImg} alt="Elder Ring" />
-          <p className="nome-jogo">Elder Ring</p>
-          <div className="acoes">
-            <button className="botao-editar">Editar</button>
-            <button className="botao-excluir">Excluir</button>
-          </div>
-        </div>
-
-        <div className="jogo">
-          <img src={enigmaDoMedoImg} alt="Enigma do Medo" />
-          <p className="nome-jogo">Enigma do Medo</p>
-          <div className="acoes">
-            <button className="botao-editar">Editar</button>
-            <button className="botao-excluir">Excluir</button>
-          </div>
-        </div>
-
-        <div className="jogo">
-          <img src={residentEvilImg} alt="Resident Evil" />
-          <p className="nome-jogo">Resident Evil</p>
-          <div className="acoes">
-            <button className="botao-editar">Editar</button>
-            <button className="botao-excluir">Excluir</button>
-          </div>
-        </div>
+                <button
+                  className="botao-excluir"
+                  onClick={() => deleteJogos(jogo.id_jogos)}
+                >
+                  Excluir
+                </button>
+              </div>
+            </div>
+          ))
+        )}
 
         <div>
           <Link to="/add" className="botao-novo-jogo">
