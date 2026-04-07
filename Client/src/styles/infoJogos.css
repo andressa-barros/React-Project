@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+/* Container da página */
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+}
+
+/* Card principal de cada jogo */
+.info-jogo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  width: 95%;
+  max-width: 1400px;
+  background-color: oklch(90.5% 0.182 98.111);
+  border-radius: 30px;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.35);
+  padding: 28px 32px;
+  margin-bottom: 30px;
+  height: auto;
+  min-height: unset;
+}
+
+/* Coluna da esquerda */
+.img-nome-jogo {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Imagem */
+.img-jogo {
+  width: 100%;
+  max-width: 320px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Nome do jogo */
+.nome-jogo {
+  font-family: "Press Start 2P", cursive;
+  font-size: 22px;
+  color: black;
+  text-align: center;
+  margin-top: 28px;
+  line-height: 1.6;
+}
+
+/* Coluna da direita */
+.detalhes-jogo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  justify-content: flex-start;
+}
+
+/* Cards de informação */
+.detalhes-jogo p {
+  font-family: "Press Start 2P", cursive;
+  background-color: oklch(88% 0.09 98);
+  padding: 22px 24px;
+  border-radius: 18px;
+  font-size: 16px;
+  color: black;
+  line-height: 1.7;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  margin: 0;
+}
+
+/* Destaque dos títulos */
+.detalhes-jogo strong {
+  font-family: "Press Start 2P", cursive;
+  color: oklch(28.2% 0.091 267.935);
+  font-size: 16px;
+}
+
+/* Mensagens de carregamento / vazio */
+.mensagem-status {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* Responsivo */
+@media (max-width: 1000px) {
+  .info-jogo {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .img-nome-jogo {
+    width: 100%;
+  }
+
+  .img-jogo {
+    max-width: 280px;
+    height: 380px;
+  }
+
+  .detalhes-jogo {
+    width: 100%;
+  }
+
+  .nome-jogo {
+    font-size: 18px;
+  }
+}

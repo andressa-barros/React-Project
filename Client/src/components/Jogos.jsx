@@ -5,6 +5,8 @@ import axios from "axios";
 
 function Jogos() {
   const [jogos, setJogos] = useState([]);
+
+  // Estado para controlar o carregamento dos jogos
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ function Jogos() {
         <h1 id="title-app">Catálogo de Jogos</h1>
       </div>
 
-      <div className="div-jogos">
+      <Link to={`/info/${jogo.id_jogos}`} className="div-jogos">
         {loading ? (
           <p className="mensagem-status">Carregando jogos...</p>
         ) : jogos.length === 0 ? (
@@ -87,7 +89,7 @@ function Jogos() {
             <span className="texto-novo-jogo">Novo Jogo</span>
           </Link>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

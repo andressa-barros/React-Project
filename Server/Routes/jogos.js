@@ -1,6 +1,11 @@
 import express from "express";
 import multer from "multer";
-import { getJogos, addJogo, deleteJogo } from "../Controllers/jogos.js";
+import {
+  getJogos,
+  addJogo,
+  deleteJogo,
+  getJogoById,
+} from "../Controllers/jogos.js";
 
 const router = express.Router();
 
@@ -20,5 +25,6 @@ const upload = multer({ storage });
 router.get("/", getJogos);
 router.post("/", upload.single("imagem"), addJogo);
 router.delete("/:id", deleteJogo);
+router.get("/:id", getJogoById);
 
 export default router;

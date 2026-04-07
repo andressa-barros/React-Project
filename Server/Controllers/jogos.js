@@ -1,5 +1,24 @@
 import { db } from "../db.js";
 
+// BUSCAR JOGO POR ID
+export const getJogoById = (req, res) => {
+  const jogoId = req.params.id;
+  const q = "SELECT * FROM jogos WHERE id_jogos = ?";
+
+  db.query(q, [jogoId], (err, result) => {
+    if (err) {
+      console.log("ERRO AO BUSCAR JOGO:", err);
+      return res.status(500).json(err);
+    }
+
+    if (result.length === 0) {
+      return res.status(404).json("Jogo não encontrado.");
+    }
+
+    return res.status(200).json(result[0]);
+  });
+};
+
 //DELETAR JOGO
 export const deleteJogo = (req, res) => {
   const jogoId = req.params.id;

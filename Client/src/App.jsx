@@ -3,6 +3,7 @@ import "./App.css";
 import Jogos from "./components/Jogos";
 import AddJogos from "./components/AddJogos";
 import Footer from "./components/Footer";
+import InfoJogos from "./components/InfoJogos";
 function App() {
   return (
     <BrowserRouter>
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Jogos />} />
           <Route path="/add" element={<AddJogos />} />
+          <Route path="/info" element={<InfoJogos />} />
         </Routes>
         <Footer />
       </div>
