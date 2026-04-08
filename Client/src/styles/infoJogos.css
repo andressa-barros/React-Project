@@ -6,23 +6,23 @@
   flex-direction: column;
   align-items: center;
   padding: 30px 20px;
+  min-height: 100vh;
+  background-color: oklch(27.8% 0.033 256.848);
 }
 
-/* Card principal de cada jogo */
+/* Card principal */
 .info-jogo {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: 40px;
   width: 95%;
-  max-width: 1400px;
+  max-width: 1200px;
   background-color: oklch(90.5% 0.182 98.111);
   border-radius: 30px;
-  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.35);
-  padding: 28px 32px;
-  margin-bottom: 30px;
-  height: auto;
-  min-height: unset;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  margin-top: 20px;
 }
 
 /* Coluna da esquerda */
@@ -34,24 +34,22 @@
   flex-shrink: 0;
 }
 
-/* Imagem */
 .img-jogo {
   width: 100%;
   max-width: 320px;
   height: 450px;
   object-fit: cover;
   border-radius: 22px;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Nome do jogo */
 .nome-jogo {
   font-family: "Press Start 2P", cursive;
-  font-size: 22px;
-  color: black;
+  font-size: 20px;
+  color: #1a1a1a;
   text-align: center;
-  margin-top: 28px;
-  line-height: 1.6;
+  margin-top: 25px;
+  line-height: 1.5;
 }
 
 /* Coluna da direita */
@@ -59,45 +57,65 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  justify-content: flex-start;
+  gap: 15px;
 }
 
-/* Cards de informação */
 .detalhes-jogo p {
   font-family: "Press Start 2P", cursive;
-  background-color: oklch(88% 0.09 98);
-  padding: 22px 24px;
-  border-radius: 18px;
-  font-size: 16px;
-  color: black;
-  line-height: 1.7;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 18px 20px;
+  border-radius: 15px;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.8;
   margin: 0;
+  border: 2px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Destaque dos títulos */
 .detalhes-jogo strong {
-  font-family: "Press Start 2P", cursive;
   color: oklch(28.2% 0.091 267.935);
-  font-size: 16px;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
-/* Mensagens de carregamento / vazio */
+/* Botão de Voltar */
+.botao-voltar-link button {
+  font-family: "Press Start 2P", cursive;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+  margin-top: 10px;
+}
+
+.botao-voltar-link button:hover {
+  background-color: oklch(28.2% 0.091 267.935);
+  transform: scale(1.05);
+}
+
+/* Mensagens de status */
 .mensagem-status {
   font-family: "Press Start 2P", cursive;
   color: white;
   text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
+  margin-top: 100px;
+  font-size: 16px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Responsivo */
+/* Responsividade */
 @media (max-width: 1000px) {
   .info-jogo {
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    padding: 20px;
   }
 
   .img-nome-jogo {
@@ -105,15 +123,11 @@
   }
 
   .img-jogo {
-    max-width: 280px;
-    height: 380px;
+    max-width: 250px;
+    height: 350px;
   }
 
-  .detalhes-jogo {
-    width: 100%;
-  }
-
-  .nome-jogo {
-    font-size: 18px;
+  .detalhes-jogo p {
+    font-size: 11px;
   }
 }

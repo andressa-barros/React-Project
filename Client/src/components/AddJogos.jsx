@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/addJogos.css";
 
@@ -145,6 +145,9 @@ function AddJogos() {
         <button type="submit" className="botao-salvar">
           Salvar Jogo
         </button>
+        <Link to="/" className="botao-voltar-link">
+          <button>Voltar</button>
+        </Link>
       </form>
     </div>
   );

@@ -3,6 +3,7 @@
 .pagina-jogos {
   width: 100%;
   min-height: 100vh;
+  background-color: oklch(27.8% 0.033 256.848);
 }
 
 .cabecalho-jogos {
@@ -10,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
+  padding: 60px 20px 20px;
 }
 
 #title-app {
@@ -23,63 +24,59 @@
   margin: 0;
 }
 
-/* Link dentro do card */
-.link-jogo {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
 .div-jogos {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
-  align-items: center;
+  gap: 30px;
+  align-items: stretch; /* Faz todos os itens da linha terem a mesma altura */
   justify-content: center;
-  padding: 24px;
-  margin-top: 30px;
-  text-decoration: none;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Card do jogo */
 .jogo {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 16px;
-  width: 220px;
-  height: 380px;
+  border-radius: 20px;
+  width: 240px; /* Aumentei um pouco a largura */
   background-color: oklch(90.5% 0.182 98.111);
-  box-shadow: 0px 0px 8px oklch(90.5% 0.182 98.111);
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
   overflow: hidden;
   transition: transform 0.2s ease;
-  padding-bottom: 16px;
+  padding-bottom: 20px;
 }
 
 .jogo:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0px 0px 20px oklch(90.5% 0.182 98.111);
+}
+
+.link-jogo {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz o link ocupar o espaço disponível */
 }
 
 .jogo img {
   width: 100%;
-  height: 240px;
+  height: 280px; /* Altura fixa para as capas */
   object-fit: cover;
-  display: block;
-  text-decoration: none;
+  border-bottom: 4px solid #000;
 }
 
 .nome-jogo {
   font-family: "Press Start 2P", cursive;
-  color: black;
-  font-size: 11px;
+  color: #000;
+  font-size: 10px;
   text-align: center;
-  line-height: 1.6;
-  padding: 14px 10px 8px;
-  min-height: 70px;
+  line-height: 1.5;
+  padding: 15px 10px;
+  margin: 0;
+  flex-grow: 1; /* Empurra os botões para baixo */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,65 +85,67 @@
 /* Layout para os botões de ação */
 .acoes {
   display: flex;
-  gap: 8px;
-  margin-top: auto;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
 }
-.botao-editar {
-  background-color: oklch(28.2% 0.091 267.935);
-  border-radius: 8px;
-  padding: 8px 12px;
-  color: white;
-  font-size: 8px;
+
+.botao-editar,
+.botao-excluir {
   font-family: "Press Start 2P", cursive;
-  text-decoration: none;
+  font-size: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: opacity 0.2s;
+}
+
+.botao-editar {
+  background-color: #1a237e;
+  flex: 1;
 }
 
 .botao-excluir {
-  background-color: oklch(50.5% 0.213 27.518);
-  border-radius: 8px;
-  padding: 8px 12px;
-  color: white;
-  font-size: 8px;
-  font-family: "Press Start 2P", cursive;
+  background-color: #b71c1c;
+  flex: 1;
 }
 
-/* Botão para adicionar novo jogo */
+.botao-editar:hover,
+.botao-excluir:hover {
+  opacity: 0.8;
+}
 
+/* Botão para adicionar novo jogo - AGORA IGUAL AOS CARDS */
 .botao-novo-jogo {
-  background-color: oklch(28.2% 0.091 267.935);
-  width: 220px;
-  height: 320px;
-  border: none;
-  padding: 12px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 3px dashed oklch(90.5% 0.182 98.111);
+  width: 240px;
+  min-height: 420px; /* Alinhado com a altura média dos cards */
   color: white;
-  font-size: 16px;
-  font-family: "Press Start 2P", cursive;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  gap: 24px;
-  transition: transform 0.2s ease;
+  border-radius: 20px;
+  gap: 20px;
+  transition: all 0.2s ease;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .botao-novo-jogo:hover {
-  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-10px);
 }
 
 .icone-mais {
-  font-size: 48px;
-  color: white;
+  font-size: 60px;
 }
 
-.mensagem-status {
+.texto-novo-jogo {
   font-family: "Press Start 2P", cursive;
-  color: oklch(90.5% 0.182 98.111);
-  text-shadow: 0px 0px 8px oklch(90.5% 0.182 98.111);
+  font-size: 12px;
   text-align: center;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-top: 20px;
+  line-height: 1.8;
 }
