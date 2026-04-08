@@ -1,5 +1,39 @@
 import { db } from "../db.js";
 
+// EDITAR JOGO
+export const editJogo = (req, res) => {
+  const jogoId = req.params.id;
+
+  const dadosParaAtualizar = {
+    nome: req.body.nome,
+    genero: req.body.genero,
+    plataforma: req.body.plataforma,
+    ano_lancamento: req.body.ano_lancamento,
+    desenvolvedora: req.body.desenvolvedora,
+    descricao: req.body.descricao,
+  };
+
+  if (req.file) {
+    dadosParaAtualizar.imagem = req.file.filename;
+  }
+
+  const q = "UPDATE jogos SET ? WHERE id_jogos = ?";
+
+  db.query(q, [dadosParaAtualizar, jogoId], (err, result) => {
+    if (err) {
+      console.error("ERRO AO EDITAR JOGO NO BANCO:", err.sqlMessage || err);
+      return res.status(500).json(err);
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json("Jogo não encontrado.");
+    }
+
+    console.log("JOGO EDITADO COM SUCESSO:", result);
+    return res.status(200).json("Jogo editado com sucesso!");
+  });
+};
+
 // BUSCAR JOGO POR ID
 export const getJogoById = (req, res) => {
   const jogoId = req.params.id;

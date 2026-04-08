@@ -3,6 +3,9 @@ import "../styles/jogos.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// Componente para exibir a lista de jogos cadastrados,
+// com opções de editar e excluir cada jogo.
+
 function Jogos() {
   const [jogos, setJogos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,7 +36,6 @@ function Jogos() {
 
     try {
       await axios.delete(`http://localhost:8800/jogos/${id_jogos}`);
-
       setJogos((prevJogos) =>
         prevJogos.filter((jogo) => jogo.id_jogos !== id_jogos),
       );
@@ -67,12 +69,13 @@ function Jogos() {
                     "https://via.placeholder.com/220x240?text=Sem+Imagem";
                 }}
               />
-
               <p className="nome-jogo">{jogo.nome}</p>
             </Link>
 
             <div className="acoes">
-              <button className="botao-editar">Editar</button>
+              <Link to={`/edit/${jogo.id_jogos}`} className="botao-editar">
+                Editar
+              </Link>
 
               <button
                 className="botao-excluir"

@@ -5,6 +5,7 @@ import {
   addJogo,
   deleteJogo,
   getJogoById,
+  editJogo,
 } from "../Controllers/jogos.js";
 
 const router = express.Router();
@@ -26,5 +27,6 @@ router.get("/", getJogos);
 router.post("/", upload.single("imagem"), addJogo);
 router.delete("/:id", deleteJogo);
 router.get("/:id", getJogoById);
+router.put("/:id", upload.single("imagem"), editJogo);
 
 export default router;

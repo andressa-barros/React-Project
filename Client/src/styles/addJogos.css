@@ -96,3 +96,9 @@
   background-color: oklch(28.2% 0.091 267.935);
   transform: scale(1.05);
 }
+
+.div-botoes-form {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
