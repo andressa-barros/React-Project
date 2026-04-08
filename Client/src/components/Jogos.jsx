@@ -5,8 +5,6 @@ import axios from "axios";
 
 function Jogos() {
   const [jogos, setJogos] = useState([]);
-
-  // Estado para controlar o carregamento dos jogos
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +22,9 @@ function Jogos() {
     fetchJogos();
   }, []);
 
-  const deleteJogos = async (id_jogos) => {
+  const deleteJogos = async (id_jogos, e) => {
+    e.preventDefault();
+
     const confirmar = window.confirm(
       "Tem certeza que deseja excluir este jogo?",
     );
@@ -49,14 +49,16 @@ function Jogos() {
         <h1 id="title-app">Catálogo de Jogos</h1>
       </div>
 
-      <Link to={`/info/${jogo.id_jogos}`} className="div-jogos">
-        {loading ? (
-          <p className="mensagem-status">Carregando jogos...</p>
-        ) : jogos.length === 0 ? (
-          <p className="mensagem-status">Nenhum jogo cadastrado ainda.</p>
-        ) : (
-          jogos.map((jogo) => (
-            <div className="jogo" key={jogo.id_jogos}>
+      {loading && <p className="mensagem-status">Carregando jogos...</p>}
+
+      {!loading && jogos.length === 0 && (
+        <p className="mensagem-status">Nenhum jogo cadastrado ainda.</p>
+      )}
+
+      <div className="div-jogos">
+        {jogos.map((jogo) => (
+          <div className="jogo" key={jogo.id_jogos}>
+            <Link to={`/info/${jogo.id_jogos}`} className="link-jogo">
               <img
                 src={`http://localhost:8800/uploads/${jogo.imagem}`}
                 alt={jogo.nome}
@@ -67,29 +69,27 @@ function Jogos() {
               />
 
               <p className="nome-jogo">{jogo.nome}</p>
+            </Link>
 
-              <div className="acoes">
-                <button className="botao-editar">Editar</button>
+            <div className="acoes">
+              <button className="botao-editar">Editar</button>
 
-                <button
-                  className="botao-excluir"
-                  onClick={() => deleteJogos(jogo.id_jogos)}
-                >
-                  Excluir
-                </button>
-              </div>
+              <button
+                className="botao-excluir"
+                onClick={(e) => deleteJogos(jogo.id_jogos, e)}
+              >
+                Excluir
+              </button>
             </div>
-          ))
-        )}
+          </div>
+        ))}
 
-        <div>
-          <Link to="/add" className="botao-novo-jogo">
-            <span className="icone-mais">+</span>
-            <span className="texto-novo-jogo">Adicionar</span>
-            <span className="texto-novo-jogo">Novo Jogo</span>
-          </Link>
-        </div>
-      </Link>
+        <Link to="/add" className="botao-novo-jogo">
+          <span className="icone-mais">+</span>
+          <span className="texto-novo-jogo">Adicionar</span>
+          <span className="texto-novo-jogo">Novo Jogo</span>
+        </Link>
+      </div>
     </div>
   );
 }
