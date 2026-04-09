@@ -90,7 +90,6 @@ function AddJogos() {
           headers: { "Content-Type": "multipart/form-data" },
         });
       }
-
       navigate("/");
     } catch (error) {
       console.error("Erro ao salvar jogo:", error);
@@ -114,7 +113,7 @@ function AddJogos() {
             value={jogo.nome}
             placeholder="Ex: Minecraft"
             onChange={handleChange}
-            required={!isEdit}
+            required
           />
         </div>
 
@@ -127,7 +126,7 @@ function AddJogos() {
             value={jogo.genero}
             placeholder="Ex: Sandbox, Terror, RPG"
             onChange={handleChange}
-            required={!isEdit}
+            required
           />
         </div>
 
@@ -140,7 +139,7 @@ function AddJogos() {
             value={jogo.plataforma}
             placeholder="Ex: PC, PS5, Xbox"
             onChange={handleChange}
-            required={!isEdit}
+            required
           />
         </div>
 
@@ -153,7 +152,7 @@ function AddJogos() {
             value={jogo.ano_lancamento}
             placeholder="Ex: 2023"
             onChange={handleChange}
-            required={!isEdit}
+            required
           />
         </div>
 
@@ -166,7 +165,7 @@ function AddJogos() {
             value={jogo.desenvolvedora}
             placeholder="Ex: Mojang Studios"
             onChange={handleChange}
-            required={!isEdit}
+            required
           />
         </div>
 
@@ -192,7 +191,7 @@ function AddJogos() {
             placeholder="Escreva uma breve descrição sobre o jogo..."
             rows="5"
             onChange={handleChange}
-            required={!isEdit}
+            required
           ></textarea>
         </div>
 

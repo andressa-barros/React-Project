@@ -3,9 +3,6 @@ import "../styles/jogos.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// Componente para exibir a lista de jogos cadastrados,
-// com opções de editar e excluir cada jogo.
-
 function Jogos() {
   const [jogos, setJogos] = useState([]);
   const [loading, setLoading] = useState(true);

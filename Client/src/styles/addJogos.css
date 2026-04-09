@@ -34,6 +34,7 @@
   gap: 20px;
 }
 
+/* Campos do formulário */
 .campo-form {
   display: flex;
   flex-direction: column;

@@ -12,10 +12,10 @@ const router = express.Router();
 
 // Configuração do multer para salvar imagens na pasta uploads
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function (_req, _file, cb) {
     cb(null, "uploads/");
   },
-  filename: function (req, file, cb) {
+  filename: function (_req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
