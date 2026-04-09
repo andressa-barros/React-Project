@@ -14,8 +14,6 @@ function InfoJogos() {
       try {
         setLoading(true);
         const response = await axios.get(`http://localhost:8800/jogos/${id}`);
-
-        // Como seu backend já manda result[0], a resposta é o objeto do jogo
         setJogo(response.data);
         setErro(false);
       } catch (error) {
