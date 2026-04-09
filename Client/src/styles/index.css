@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Faz a aplicação ocupar a tela toda */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Estilo base opcional */
+body {
+  background-color: oklch(27.8% 0.033 256.848);
+}

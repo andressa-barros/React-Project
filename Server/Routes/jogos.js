@@ -1,0 +1,32 @@
+import express from "express";
+import multer from "multer";
+import {
+  getJogos,
+  addJogo,
+  deleteJogo,
+  getJogoById,
+  editJogo,
+} from "../Controllers/jogos.js";
+
+const router = express.Router();
+
+// Configuração do multer para salvar imagens na pasta uploads
+const storage = multer.diskStorage({
+  destination: function (_req, _file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (_req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
+// Rotas
+router.get("/", getJogos);
+router.post("/", upload.single("imagem"), addJogo);
+router.delete("/:id", deleteJogo);
+router.get("/:id", getJogoById);
+router.put("/:id", upload.single("imagem"), editJogo);
+
+export default router;

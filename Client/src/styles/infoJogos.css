@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+/* Container da página */
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  min-height: 100vh;
+  background-color: oklch(27.8% 0.033 256.848);
+}
+
+/* Card principal */
+.info-jogo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  width: 95%;
+  max-width: 1200px;
+  background-color: oklch(90.5% 0.182 98.111);
+  border-radius: 30px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  margin-top: 20px;
+}
+
+/* Coluna da esquerda */
+.img-nome-jogo {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.img-jogo {
+  width: 100%;
+  max-width: 320px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nome-jogo {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 25px;
+  line-height: 1.5;
+}
+
+/* Coluna da direita */
+.detalhes-jogo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detalhes-jogo p {
+  font-family: "Press Start 2P", cursive;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 18px 20px;
+  border-radius: 15px;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.8;
+  margin: 0;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.detalhes-jogo strong {
+  color: oklch(28.2% 0.091 267.935);
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Botão de Voltar */
+.botao-voltar-link button {
+  font-family: "Press Start 2P", cursive;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+  margin-top: 10px;
+}
+
+.botao-voltar-link button:hover {
+  background-color: oklch(28.2% 0.091 267.935);
+  transform: scale(1.05);
+}
+
+/* Mensagens de status */
+.mensagem-status {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 16px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 1000px) {
+  .info-jogo {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .img-nome-jogo {
+    width: 100%;
+  }
+
+  .img-jogo {
+    max-width: 250px;
+    height: 350px;
+  }
+
+  .detalhes-jogo p {
+    font-size: 11px;
+  }
+}

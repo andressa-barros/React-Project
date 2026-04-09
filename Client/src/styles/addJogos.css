@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+/* Container principal da página de adição de jogos */
+.div-add-jogos {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Título da página */
+.titulo-add-jogo {
+  font-family: "Press Start 2P", cursive;
+  color: oklch(90.5% 0.182 98.111);
+  text-shadow: 0px 0px 8px oklch(90.5% 0.182 98.111);
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Formulário de adição de jogo */
+.form-add-jogo {
+  width: 100%;
+  max-width: 700px;
+  background-color: oklch(28.2% 0.091 267.935);
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Campos do formulário */
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.campo-form label {
+  font-family: "Press Start 2P", cursive;
+  font-size: 16px;
+  color: white;
+  line-height: 1.6;
+}
+
+.campo-form input,
+.campo-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+/* Botão de Salvar */
+.botao-salvar {
+  background-color: oklch(90.5% 0.182 98.111);
+  color: black;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.botao-salvar:hover {
+  transform: translateY(-3px);
+}
+
+/* Botão de Voltar */
+.botao-voltar-link button {
+  font-family: "Press Start 2P", cursive;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+  margin-top: 10px;
+}
+
+.botao-voltar-link button:hover {
+  background-color: oklch(28.2% 0.091 267.935);
+  transform: scale(1.05);
+}
+
+.div-botoes-form {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
