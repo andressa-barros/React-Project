@@ -2,8 +2,10 @@ import { db } from "../db.js";
 
 // EDITAR JOGO
 export const editJogo = (req, res) => {
+  // Obter o ID do jogo a ser editado a partir dos parâmetros da URL
   const jogoId = req.params.id;
 
+  // Criar um objeto com os dados a serem atualizados
   const dadosParaAtualizar = {
     nome: req.body.nome,
     genero: req.body.genero,
@@ -13,6 +15,7 @@ export const editJogo = (req, res) => {
     descricao: req.body.descricao,
   };
 
+  // Se um novo arquivo de imagem foi enviado, adicionar o nome do arquivo ao objeto de atualização
   if (req.file) {
     dadosParaAtualizar.imagem = req.file.filename;
   }
@@ -21,7 +24,7 @@ export const editJogo = (req, res) => {
 
   db.query(q, [dadosParaAtualizar, jogoId], (err, result) => {
     if (err) {
-      console.error("ERRO AO EDITAR JOGO NO BANCO:", err.sqlMessage || err);
+      console.error("ERRO AO EDITAR JOGO NO BANCO:", err.message || err);
       return res.status(500).json(err);
     }
 
